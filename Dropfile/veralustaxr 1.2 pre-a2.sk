@@ -1,4 +1,6 @@
 # Veralust Anti-Xray
+# Don't use this build... Rich BUG
+# For reference use only
 
 options:
 	prefix: [&aVeralust &bAnti-Xray&b]
