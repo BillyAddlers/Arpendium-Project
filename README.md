@@ -1,37 +1,28 @@
-## Welcome to GitHub Pages
+## Welcome to Arpendium-Project
 
-You can use the [editor on GitHub](https://github.com/BillyAddlers/Arpendium-Project/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Abstraksi
+### Apa itu Arpendium-Project?
+Hahaha, nice question dude :v..
+Bahkan author nya saja gak bisa jawab.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Mungkin, hanya untuk mengekspresikan diri? mengisi waktu luang? atau mungkin yang lain?
+Yah, anggap saja seperti itu.
 
-### Markdown
+### Isi dari Arpendium-Project
+Dominannya sih rata-rata file config dan file skript server minecraft
+# Ingin tau kemana Skript itu dijalankan?
+# Check this out
+http://minecraft-mp.com/server/176511/vote/
+Bantuan dan Partisipasi sangan dihargai ^_^
+Skript yang bagus akan auth pasang di server ^_^
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Ingin melanjutkan project yg ada? menambahkan sesuatu? notify me.. 
+Siapa tau cocok sama selera author ^_^
 
-```markdown
-Syntax highlighted code block
+Tapi mungkin kedepannya akan ada banyak lagi ^_^ (Soalnya authornya bukan programmer + gak tau apa apa soal bahasa komputer)
+Peace. hahaha
 
-# Header 1
-## Header 2
-### Header 3
+Namun tidak sebatas disana saja, semua yang ada di dalam Arpendium-Project bersifat Open-Source, dan tidak diperjual-belikan :vv ^_^ (siapa juga yg mau beli :vv)
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/BillyAddlers/Arpendium-Project/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Maap kalo kebanyakan emot :v..
+Sekian
