@@ -1,7 +1,7 @@
 ## Welcome to Arpendium-Project
 
 Abstraksi
-### Apa itu Arpendium-Project?
+## Apa itu Arpendium-Project?
 Hahaha, nice question dude :v..
 Bahkan author nya saja gak bisa jawab.
 
@@ -10,8 +10,9 @@ Yah, anggap saja seperti itu.
 
 ### Isi dari Arpendium-Project
 Dominannya sih rata-rata file config dan file skript server minecraft
-# Ingin tau kemana Skript itu dijalankan?
-# Check this out
+
+## Ingin tau kemana Skript itu dijalankan?
+## Check this out
 http://minecraft-mp.com/server/176511/vote/
 Bantuan dan Partisipasi sangan dihargai ^_^
 Skript yang bagus akan auth pasang di server ^_^
