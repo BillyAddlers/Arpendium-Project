@@ -1,5 +1,7 @@
 # Veralust Killstreak Counter
-# This
+# 
+options:
+	Version: 1.1 pre-a1
 
 variables:
 	{kill counter.%player%.kills_session} = 0
@@ -31,7 +33,7 @@ command /killstreak [<text>] [<offlineplayer>]:
 			send "&6[&aVeralust &bKillstreak&6]"
 			send "&a/killstreak : display your killstreak"
 			send "&a/killstreak prize : check prizes event"
-			send '&a/killstreak check : display other's killstreak"
+			send "&a/killstreak check : display other's killstreak"
 			stop
 		if arg-1 is "check":
 			if arg-2 is not set:
