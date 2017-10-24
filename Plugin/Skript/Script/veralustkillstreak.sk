@@ -1,0 +1,48 @@
+# Veralust Killstreak Counter
+# This
+
+variables:
+	{kill counter.%player%.kills_session} = 0
+	{kill counter.%player%.kills_session_max} = 0
+	{kill counter.%player%.kills_total} = 0
+
+on death:
+	attacker is a player
+	add 1 to {kill counter.%attacker%.kills_total}
+	add 1 to {kill counter.%attacker%.kills_session}
+	{kill counter.%attacker%.kills_session} is greater than {kill counter.%attacker%.kills_session_max}:
+		set {kill counter.%attacker%.kills_session_max} to {kill counter.%attacker%.kills_session}
+
+on death of player:
+	set {kill counter.%player%.kills_session} to 0
+
+command /killstreak [<text>] [<offlineplayer>]:
+	executable by: players
+	trigger:
+		if arg-1 is not set:
+			send "&aYou have killed &6%{kill counter.%player%.kills_session}% &amobs and players in this life out of &6%{kill counter.%player%.kills_total}% &akills in total."
+			send "&aYour best killstreak is &6%{kill counter.%player%.kills_session_max}% &akills in one life."
+			send "&aClaim your one-time prize with /killstreak prize &6(coming soon)"
+			stop
+		if arg-1 is "prize":
+			send "&6Coming Soon ^_^"
+			stop
+		if arg-1 is "help":
+			send "&6[&aVeralust &bKillstreak&6]"
+			send "&a/killstreak : display your killstreak"
+			send "&a/killstreak prize : check prizes event"
+			send '&a/killstreak check : display other's killstreak"
+			stop
+		if arg-1 is "check":
+			if arg-2 is not set:
+				send "&cWrong Usage."
+				send "&aCheck other's killstreak by using /killstreak check <player>"
+				stop
+			if arg-2 is set:
+				wait 1 tick
+				send "&a%arg-2% have killed &6%{kill counter.%arg-2%.kills_session}% &amobs and players in this life out of &6%{kill counter.%arg-2%.kills_total}% &akills in total."
+				send "&a%arg-2% best killstreak is &6%{kill counter.%arg-2%.kills_session_max}% &akills in one life."
+				stop
+# Put Prizez coding below
+# Good Luck ^_^
+
