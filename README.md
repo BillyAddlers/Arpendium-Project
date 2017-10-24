@@ -14,7 +14,7 @@ Dominannya sih rata-rata file config dan file skript server minecraft
 ## Ingin tau kemana Skript itu dijalankan?
 ## Check this out
 http://minecraft-mp.com/server/176511/vote/
-Bantuan dan Partisipasi sangan dihargai ^_^
+Bantuan dan Partisipasi sangat dihargai ^_^
 Skript yang bagus akan auth pasang di server ^_^
 
 Ingin melanjutkan project yg ada? menambahkan sesuatu? notify me.. 
