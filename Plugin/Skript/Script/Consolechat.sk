@@ -1,0 +1,34 @@
+command /consay [<text>]:
+	description: Console Chat
+	executable by: Console
+	trigger:
+		broadcast "&c[&dConsole&c] : &b%arg 1%&7"
+		stop
+		
+command /contrix [<text>]:
+	description: Console Chat
+	executable by: Console
+	trigger:
+		broadcast "&c[&dConsole&c] &bJinxthetrix : &b%arg 1%&7"
+		stop
+		
+command /conlex [<text>]:
+	description: Console Chat
+	executable by: Console
+	trigger:
+		broadcast "&c[&dConsole&c] &bLexsus : &b%arg 1%&7"
+		stop
+		
+command /conzzy [<text>]:
+	description: Console Chat
+	executable by: Console
+	trigger:
+		broadcast "&c[&dConsole&c] &bMazzyStarr : &b%arg 1%&7"
+		stop
+		
+command /conjack [<text>]:
+	description: Console Chat
+	executable by: Console
+	trigger:
+		broadcast "&c[&dConsole&c] &bjackREEPER12 : &b%arg 1%&7"
+		stop

@@ -1,0 +1,63 @@
+# Veralust Bank Plugin
+# Depend on economy bank
+# Currently using essentials economy
+# Different economy plugins? try different command on them
+
+options: 
+	Version: 1.0
+	prefix: &b[&aVeralust &eBank&b]
+	
+variables:
+	{veraluts.bank.gold} = 0
+	{veralust.bank.eme} = 0
+	
+command /bank [<text>] [<text>] [<text>]:
+	permission: veralust.bank
+	trigger:
+		if arg-1 is not set:
+			send "{@prefix}---> &aVersion : {@Version}"
+			send "&aTry /bank update"
+			stop
+		if arg-1 is "update":
+			if arg-2 is not set:
+				send "&cWrong Format, use /bank update <gold> <emerald>"
+				stop
+			if arg-2 is set:
+				if arg-3 is not set:
+					send "&cWrong Format, use /bank update <gold> <emerald>"
+					stop
+				if arg-3 is set:
+					wait 1 tick
+					set {veralust.bank.gold} to %arg-2%
+					set {veralust.bank.emerald to %arg-3%
+					make console execute command "holo setline bank 5 &aEmerald : %arg-3% &0|| &6Gold : %arg-2%"
+					send "&aBank Successfuly updated"
+					stop
+					
+command /withdraw [<text>]:
+	trigger:
+		if 
+		if arg-1 is "gold":
+			make console execute command "eco take %player% %{veralust.bank.gold}%"
+			wait 1 tick
+			make console execute command "give %player% gold 1"
+			stop
+		if arg-1 is "emerald":
+			make console execute command "eco take %player% %{veralust.bank.eme}%"
+			wait 1 tick
+			make console execute command "give %player% emerald 1"
+			stop
+			
+command /withdrawblock [<text>]:
+	trigger:
+		if 
+		if arg-1 is "gold":
+			make console execute command "eco take %player% %{veralust.bank.gold}%"
+			wait 1 tick
+			make console execute command "give %player% goldblock 1"
+			stop
+		if arg-1 is "emerald":
+			make console execute command "eco take %player% %{veralust.bank.eme}%"
+			wait 1 tick
+			make console execute command "give %player% emeraldblock 1"
+			stop

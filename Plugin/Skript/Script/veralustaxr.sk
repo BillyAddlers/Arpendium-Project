@@ -1,0 +1,201 @@
+# Veralust Anti-Xray
+
+options:
+	prefix: &b[&aVeralust &bAnti-Xray&b]
+	nopermission: &cYou don't have permission to do that!
+	diamondnotify: &a%player% &cyou mined a &4Diamond Ore! &cSee the Statistics with the command &b/minestats!
+	emeraldnotify:  &a%player% &cyou mined a &4Emerald Ore &cSee the Statistics with the command &b/minestats!
+	goldnotify: &a%player% &cyou mined a &4Gold Ore &cSee the Statistics with the command &b/minestats!
+	tagserver: &f[&aVeralust &bMinestats&f]
+	permissiontomembers: veralust.miningplayer
+	permissionowners: veralust.miningowner
+	Version: 1.2 pre-a6
+	
+variables:
+	{mineddiamond.%player%} = 0
+	{mineemerald.%player%} = 0
+	{totalminedblocks.%player%} = 0
+	{minedredst.%player%} = 0
+	{minedcoal.%player%} = 0
+	{minedgold.%player%} = 0
+	{minedstone.%player%} = 0
+	{minediron.%player%} = 0
+	
+on mine:
+	event-block is iron ore:
+		wait 1 tick
+		add 1 to {minediron.%player%}
+		add 1 to {totalminedblocks.%player%}
+		stop
+		
+on mine:
+	event-block is gold ore:
+		wait 1 tick
+		add 1 to {minedgold.%player%}
+		add 1 to {totalminedblocks.%player%}
+		stop
+
+on mine:
+	event-block is emerald ore:
+		wait 1 tick
+		add 1 to {mineemerald.%player%}
+		add 1 to {totalminedblocks.%player%}
+		stop
+
+on mine:
+	event-block is diamond ore:
+		wait 1 tick
+		add 1 to {mineddiamond.%player%}
+		add 1 to {totalminedblocks.%player%}
+		stop
+
+on mine:
+	event-block is stone:
+		wait 1 tick
+		add 1 to {minedstone.%player%}
+		add 1 to {totalminedblocks.%player%}
+		stop
+		
+on mine:
+	event-block is redstone ore:
+		wait 1 tick
+		add 1 to {minedredst.%player%}
+		add 1 to {totalminedblocks.%player%}
+		stop
+		
+on mine:
+	event-block is coal ore:
+		wait 1 tick
+		add 1 to {minedcoal.%player%}
+		add 1 to {totalminedblocks.%player%}
+		stop
+	
+on load:
+	wait 2 ticks
+	send "[Veralust Anti-Xray] Version {@Version} has been loaded..." to console
+	send "[Veralust Anti-Xray] Report bug at veralustcraft.enjin.com" to console
+	stop
+	
+command /minecheck [<text>] [<text>] [<offlineplayer>]:
+	description: Check mining rate of a player
+	permission: veralust.miningowner
+	permission message: &cYou Don't have permission for this command
+	aliases: /xc /xray /miningstats /mincheck
+	trigger:
+		if arg-1 is not set:
+			send "{@prefix} , &aUsing Version {@Version}"
+			send "&dTry /minecheck help"
+			stop
+		if arg-1 is "help":
+			send "{@prefix} , &aUsing Version {@Version}"
+			send "&bCommand List"
+			send "&a/minecheck orecount ores <player>"
+			send "&a/minecheck orecount admin &6(Coming Soon)"
+			send "&a/minecheck orecount clear <player>"
+			send "&a/minecheck clear clearores <player>"
+			send "&a/minecheck clear cleartotal <player>"
+			stop
+		if arg-1 is not "gui" or "menu" or "a" or "alerts" or "orecount" or "oc" or "help" or "reload" or "rl":
+			send "{@prefix} &cWrong Commands!"
+			send "{@prefix} &cTry use /minecheck help"
+			stop
+		if arg-1 is "clear":
+			if arg-2 is "clearores":
+				if arg-3 is set:
+					send "&6&l%arg-3% &aAll Ore &aMining Stats &dReset!"
+					set {mineddiamond.%arg-3%} to 0
+					set {mineemerald.%arg-3%} to 0
+					set {minedgold.%arg-3%} to 0
+					set {minedstone.%arg-3%} to 0
+					set {minediron.%arg-3%} to 0
+					set {minedcoal.%arg-3%} to 0
+					set {minedredst.%arg-3%} to 0
+					stop
+				if arg-3 is not set:
+					send "&cCorrect Usage is &a/minecheck clearores <player>"
+					stop
+			if arg-2 is "cleartotal":
+				if arg-3 is set:
+					send "&6&l%arg-3% &aTotal Mine &aMining Stats &dReset!"
+					set {totalminedblocks.%arg-3%} to 0
+					stop
+				if arg-3 is not set:
+					send "&cCorrect Usage is &a/minecheck cleartotal <player>"
+					stop
+		if arg-1 is "orecount" or "oc":
+			if arg-2 is not set:
+				send "{@prefix} &cWrong Commands!"
+				send "{@prefix} &cTry use /minecheck help"
+				stop
+			if arg-2 is "ores":
+				if arg-3 is not set:
+					send "{@prefix} &cWrong Usage!"
+					send "{@prefix} &cTry /minecheck orecount ores <playername>"
+					stop
+				if arg-3 is set:
+					send "&e&m-[-&r &6&l%arg-3% &a&lMining Statistics &e&m-]-"
+					send "&dPowered by Veralust Anti-Xray {@Version}"
+					send "{@prefix} &8Stone: &b%{minedstone.%arg-3%}%"
+					send "{@prefix} &8Coal: &b%{minedcoal.%arg-3%}%"
+					send "{@prefix} &cRedstone: &b%{minedredst.%arg-3%}%"
+					send "{@prefix} &7Iron: &b%{minediron.%arg-3%}%"
+					send "{@prefix} &6Gold: &b%{minedgold.%arg-3%}%"
+					send "{@prefix} &bDiamond: &b%{mineddiamond.%arg-3%}%"
+					send "{@prefix} &aEmerald: &b%{mineemerald.%arg-3%}%"
+					send "{@prefix} &5Total Block &b%{totalminedblocks.%arg-3%}%"
+					stop
+			if arg-2 is "clear":
+				if arg-3 is not set:
+					send "{@prefix} &cWrong Usage!"
+					send "{@prefix} &cTry /minecheck orecount clear <playername>"
+					stop
+				if arg-3 is set:
+					send "&6&l%arg-3% &aMining Stats &dReset!"
+					set {mineddiamond.%arg-3%} to 0
+					set {mineemerald.%arg-3%} to 0
+					set {minedgold.%arg-3%} to 0
+					set {minedstone.%arg-3%} to 0
+					set {minediron.%arg-3%} to 0
+					set {minedcoal.%arg-3%} to 0
+					set {minedredst.%arg-3%} to 0
+					set {totalminedblocks.%arg-3%} to 0
+					stop
+		if arg-1 is "reload" or "rl":
+			send "{@prefix} &ais being reloaded..."
+			wait 1 second
+			make console execute command "/sk reload veralustaxr"
+			wait 1 tick
+			send "{@prefix} &ahas finished reloading!"
+			send "{@prefix} Using Version {@Version}"
+			stop
+
+command /minestats [<text>]:
+	description: Check Mining Stats
+	permission: veralust.miningplayer
+	permission message: {@tagserver} {@nopermission}
+	aliases: /m /ms
+	trigger:
+		if arg 1 is not set:
+			send "&b|||&aLifetime Mining Statistics&b|||"
+			send "&dPowered by Veralust Mine {@Version}"
+			send "&3You mined &8Stone: &b%{minedstone.%player%}%"
+			send "&3You mined &8Coal: &b%{minedcoal.%player%}%"
+			send "&3You mined &cRedstone: &b%{minedredst.%player%}%"
+			send "&3You mined &7Iron: &b%{minediron.%player%}%"
+			send "&3You mined &6Gold: &b%{minedgold.%player%}%"
+			send "&3You mined &bDiamond: &b%{mineddiamond.%player%}%"
+			send "&3You mined &aEmerald: &b%{mineemerald.%player%}%"
+			send "&5All Time Total Block &b%{totalminedblocks.%player%}%"
+			stop
+		if arg 1 is "help":
+			send "&6Mining Stats"
+			send "&c/minestats help &7- Show all the commands of the plugin!"
+			send "&c/minestats &7- Show your mined stats"
+			send "&c/minestats statsgui &7- Show your mined stats &e(Coming Soon)"
+			
+on join:
+	wait 5 ticks
+	if player is op:
+		send "&3Hi Operators"
+		send "&bServers currently running {@prefix} Version {@Version}"
+		stop

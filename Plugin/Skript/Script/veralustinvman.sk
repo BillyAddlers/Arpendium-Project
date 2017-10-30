@@ -1,0 +1,21 @@
+# Veralust Head Claim and Head Drops System
+# Has no Dependencies
+
+options:
+	prefix: &b[&aVeralust &eInvManager&b]
+	Version: 1.0
+
+command /headp [<text="%player%">]:
+	permission: veralust.invowner
+	permission message: &cNo Permission!
+	trigger:
+		make console execute command "give %player% skull 1 3 {SkullOwner:%argument%}"
+		send "{@prefix} &aYou beheaded %argument%!"
+		stop
+
+on death:
+	attacker is a player
+	chance of 10%:
+		make console execute command "give %player% skull 1 3 {SkullOwner:%entity%}"
+		send "{@prefix} &aYou beheaded %entity%"
+		stop

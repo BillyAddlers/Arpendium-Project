@@ -1,0 +1,47 @@
+# Veralust GiftCode Rewards
+
+options:
+	Version: 1.0
+	
+variables:
+	{veralust.%player%.giftcode} = true
+
+command /mastergiftcode [<text>] [<offlineplayer>]:
+	description: giftcode master command
+	permission: veralust.giftcode
+	permission message: &cNo Permission!
+	trigger:
+		if arg-1 is not set:
+			send "Use /mastergiftcode setnew <player> to renew player giftcode"
+			stop
+		if arg-1 is "setnew":
+			if arg-2 is not set:
+				send "&cYou forget to input player name"
+				stop
+			if arg-2 is set:
+				wait 1 tick
+				set {veralust.%arg-1%.giftcode} to true
+				send "&aGiftcode renewed"
+				stop
+	
+command /giftcode [<text>]:
+	executable by: players
+	trigger:
+		if arg-1 is not set:
+			send "&cYou forget to input your giftcode"
+			stop
+		if arg-1 is "secret-subway":
+			if {veralust.%player%.giftcode} is not set:
+				wait 1 tick
+				make console execute command "crate key %player% uncommon 3"
+				set {veralust.giftcode} to false
+				stop
+			if {veralust.%player%.giftcode} is false:
+				wait 1 tick
+				send "&cYou've already claim this reward"
+				stop
+			if {veralust.%player%.giftcode} is true:
+				wait 1 tick
+				make console execute command "crate key %player% uncommon 3"
+				set {veralust.giftcode} to false
+				stop
