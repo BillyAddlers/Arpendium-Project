@@ -1,0 +1,536 @@
+# Veralust Hub Core
+# Gonna make this more powerful, and works using both Towny and Guilds
+# Now included with Rank Manager for staff and profiling for player
+# Don't change anything here, unless you know what are you doing
+# 『This one's better :3』
+
+# Below are some configs
+# Don't touch the {@Version} part
+
+options:
+	Version: 1.1 SNAPSHOT.a7
+	prefix: &9[&6ROV&9]
+	permissionmessage: &cInsufficient Permission
+	wtsprefix: &6[&2Sell&6]
+	wtbprefix: &6[&aBuy&6]
+	credit1: &b『&3Nayuta Kani&6##&36815&b』
+	credit2: &b『&3jackREEPER12&6##5311&b』
+	credit3: &b『&3Hanako-Hamasaki&6##5492&b』
+	credit4: &b『&3Ren-Köstler&6##0668&b』
+	border: &b+-----&3-----&7-----&8-----------&7-----&3-----&b-----+
+
+# Below are Variables part
+# Add variables here..
+# Thanks :3	
+
+variables:
+	{commend.%player%} = 0
+	{giveaway.state} = false
+	
+# ===========================================
+# Core Skript
+# The essentials part about ROV-HubCore
+# Don't change line below, no matter what happen :v
+# I really mean it bitch :v
+	
+on world save:
+	event-world is "lobbymk2":
+		wait 1 tick
+		broadcast "{@prefix} &3Saving World..." 
+		wait 20 tick
+		broadcast "{@prefix} &3World are Saved"
+		stop
+
+command /hubcore [<text>]:
+	permission: veralust.hubcore
+	permission message: &cInsufficient permission
+	trigger:
+		if arg 1 is not set:
+			send "&2Core Command for Hubcore."
+			send "&2Try /hubcore help"
+			send "&2Powered by {@prefix}"
+			send "&2Version {@Version}"
+			send "&2From developer, with love {@credit1}"
+			send "&2Special thanks to:"
+			send "&6+ {@credit2}"
+			send "&6+ {@credit3}"
+			send "&6+ {@credit4}"
+			stop
+		if arg 1 is "reload":
+			send "{@prefix} &3Reloading Hubcore..."
+			wait 1 tick
+			make console execute command "sk reload vskhubcore"
+			wait 20 tick
+			send "{@prefix} &3Reloaded.."
+			send "&2Using Version {@Version}"
+			stop
+		if arg 1 is "help":
+			send "&2This function is not yet implemented"
+			send "&2Using Version {@Version}"
+			stop
+		
+# Veralust Rank Manager
+# Dependencies are LuckPerms and SkQuerry
+# This project is maintained as uprank plugin
+# Don't change, unless you know what are you doing
+# =================================================		
+		
+command /lpgroup [<offlineplayer>] [<text>]:
+	permission: veralust.rankmanager
+	permission message: &cInsufficient permission
+	executable by: player or console
+	trigger:
+		if arg-1 is not set:
+			send "Usage : &3/lpgroup <player> <rank>"
+			stop
+		if arg-1 is set:
+			if arg-2 is not set:
+				send "Usage : &3/lpgroup <player> <rank>"
+				stop
+			if arg-2 is not "peasant" or "scout" or "knight" or "magus" or "magic" or "rare" or "epic" or "unique" or "legend" or "heroic" or "dragon":
+				send "&cInsufficient permission for that rank"
+				stop
+			if arg-2 is "guest" or "default" or "scavenger" or "peasant" or "scout" or "knight" or "magus" or "magic" or "rare" or "epic" or "unique" or "legend" or "heroic" or "dragon" or "youtuber":
+				make console execute command "lp user %arg-1% parent set %arg-2%"
+				loop all players:
+					loop-player has permission "veralust.ranknotify"
+					send "{@border}" to loop-player
+					send "{@prefix}" to loop-player
+					send "%arg-1% rank has been changed" to loop-player
+					send "to %arg-2%" to loop-player
+					send "{@border}" to loop-player
+					stop
+					
+command /whitelistfinish:
+	permission: whitelist.finish
+	permission message: &cInsufficient permission
+	executable by: player
+	trigger:
+		wait 1 tick
+		make console execute command "lp user %player% parent set scavenger"
+		send "{@border}"
+		send "{@prefix}"
+		send "&cAnda telah ter-whitelist"
+		send "{@border}"
+		stop
+		
+command /lpstaffgroup [<offlineplayer>] [<text>]:
+	permission: veralust.staffmanager
+	permission message: &cInsufficient permission
+	executable by: player or console
+	trigger:
+		if arg-1 is not set:
+			send "Usage : &3/lpstaffgroup <player> <rank>"
+			stop
+		if arg-1 is set:
+			if arg-2 is not set:
+				send "Usage : &3/lpstaffgroup <player> <rank>"
+				stop
+			if arg-2 is not "helper" or "moderator" or "designer" or "admin" or "developer" or "owner":
+				send "&cInsufficient permission for that rank"
+				stop
+			if arg-2 is "helper" or "moderator" or "designer" or "admin" or "developer" or "owner":
+				make console execute command "lp user %arg-1% parent set %arg-2%"
+				loop all players:
+					loop-player has permission "veralust.ranknotify"
+					send "{@border}" to loop-player
+					send "{@prefix}" to loop-player
+					send "%arg-1% rank has been changed" to loop-player
+					send "to %arg-2%" to loop-player
+					send "{@border}" to loop-player
+					stop	
+
+# ========================================================================================
+# below are rankup skript
+
+command /uprankpeasant:
+	permission: veralust.uprankpeasant
+	permission message: &cInsufficient Permission
+	executable by: player or console
+	trigger:
+		wait 1 tick
+		open chest with 1 rows named "&6Promote to &2Peasant?" to player
+		format slot 3 of player with emerald block named "&aYES" with lore "&3Confirm my Rankup" to close then run [make console execute command "lpgroup %player% peasant"]->[make console execute command "eco take %player% 40"]->[send "&cYou are promoted to &2Peasant"]
+		format slot 5 of player with redstone block named "&cNO" with lore "&3Cancel my Rankup" to close then run [send "&aPromotion Canceled"]
+		stop
+		
+command /uprankscout:
+	permission: veralust.uprankscout
+	permission message: &cInsufficient Permission
+	executable by: player or console
+	trigger:
+		wait 1 tick
+		open chest with 1 rows named "&6Promote to &aScout?" to player
+		format slot 3 of player with emerald block named "&aYES" with lore "&3Confirm my Rankup" to close then run [make console execute command "lpgroup %player% scout"]->[make console execute command "eco take %player% 500"]->[send "&cYou are promoted to &aScout"]
+		format slot 5 of player with redstone block named "&cNO" with lore "&3Cancel my Rankup" to close then run [send "&aPromotion Canceled"]
+		stop
+		
+command /uprankknight:
+	permission: veralust.uprankknight
+	permission message: &cInsufficient Permission
+	executable by: player or console
+	trigger:
+		wait 1 tick
+		open chest with 1 rows named "&6Promote to &eKnight?" to player
+		format slot 3 of player with emerald block named "&aYES" with lore "&3Confirm my Rankup" to close then run [make console execute command "lpgroup %player% knight"]->[make console execute command "eco take %player% 2000"]->[send "&cYou are promoted to &aScout"]
+		format slot 5 of player with redstone block named "&cNO" with lore "&3Cancel my Rankup" to close then run [send "&aPromotion Canceled"]
+		stop
+		
+command /uprankmagus:
+	permission: veralust.uprankmagus
+	permission message: &cInsufficient Permission
+	executable by: player or console
+	trigger:
+		wait 1 tick
+		open chest with 1 rows named "&6Promote to &1Magus?" to player
+		format slot 3 of player with emerald block named "&aYES" with lore "&3Confirm my Rankup" to close then run [make console execute command "lpgroup %player% magus"]->[make console execute command "eco take %player% 5000"]->[send "&cYou are promoted to &aScout"]
+		format slot 5 of player with redstone block named "&cNO" with lore "&3Cancel my Rankup" to close then run [send "&aPromotion Canceled"]
+		stop
+
+# ========================
+# Below are ./wtb and ./wts
+# Don't change anything, unless you know what are you doing
+
+command /wts [<text>] [<text>]:
+	description: Command prefered for economical purpose
+	permission: veralust.economy
+	permission message: &cInsufficient Permission
+	trigger:
+		if arg-1 is not set: 
+			send "{@wtsprefix} &3You must set both argument"
+			stop
+		if arg-1 is "help":
+			send "{@wtsprefix}"
+			send "&3Usage are /wts <nama barang> <harga barang>"
+			stop
+		if arg-1 is not "help":
+			if arg-2 is not set:
+				send "&3Salah bego, /wts help"
+				stop
+			if arg-2 is set:
+				broadcast "{@wtsprefix} &b&l%player% &3Menjual &e&l%arg-1% &3dengan harga &e&l%arg-2%"
+				stop
+
+command /wtb [<text>]:
+	description: Command prefered for economical purpose
+	permission: veralust.economy
+	permission message: &cInsufficient Permission
+	trigger:
+		if arg-1 is not set:
+			send "{@wtbprefix} &3You must set both argument"
+			stop
+		if arg-1 is set:
+			broadcast "{@wtbprefix} &b&l%player% &3Membutuhkan &e&l%arg-1%"
+			stop
+			
+# ========================
+# Below are ADV prevention Skript
+
+on chat:
+	if message contains ".com", ".net", ".de", ".me", ".eu", "eu.", "us.", "server", "mineplex" or "fakeplex":
+		if player does not have permission "veralust.profileadmin":
+			cancel event
+			send "{@border}"
+			send "&c&lAdvertising is against the rules. You will be"
+			send "&c&lpermanently banned from the server if you attempt"
+			send "&c&lto advertise."
+			send "{@border}"
+			loop all players:
+				if loop-player has permission "profile.staff":
+					send "{@prefix} &c%player% might be trying to advertise." to loop-player
+					send "{@prefix} &c%player%'s Message: &7%message%" to loop-player
+					stop
+
+		
+# ========================
+# Below are profile skript
+# Also part of rankup, maybe :v
+		
+command /profile [<text>] [<text>]:
+	description: used for server profiling
+	usage: /profile <arg> <arg>
+	permission: veralust.profiling
+	permission message: &cInsufficient permission
+	executable by: player
+	trigger:
+		if arg 1 is not set:
+			set {_p} to "%player%" parsed as player
+			open chest with 4 rows named "{@prefix} &bMy Profile" to player
+			wait 1 tick
+			format slot 0 of player with skull of {_p} named "&eYour Statistic" with lore "&6&l%{_p}%" to be unstealable
+			format slot 1 of player with white glass named "&c[X]" to be unstealable
+			format slot 2 of player with white glass named "&c[X]" to be unstealable
+			format slot 3 of player with white glass named "&c[X]" to be unstealable
+			format slot 4 of player with white glass named "&c[X]" to be unstealable
+			format slot 5 of player with white glass named "&c[X]" to be unstealable
+			format slot 6 of player with white glass named "&c[X]" to be unstealable
+			format slot 7 of player with white glass named "&c[X]" to be unstealable
+			format slot 8 of player with white glass named "&c[X]" to be unstealable
+			format slot 9 of player with gold ingot named "&eYour Money" with lore "&6%player's money%" to be unstealable
+			stop
+		if arg 1 is "help":
+			if arg 2 is not set:
+				wait 1 tick
+				send "{@prefix}"
+				send "&e/profile help (Untuk bantuan mengenai profile command)"
+				send "&e/profile info (Untuk melihat profile anda)"
+				send "&e/profile setname <arg> (Untuk memasukan data nama anda)"
+				send "&e/profile setemail <arg> (Untuk memasukan data email anda)"
+				send "&e/profile setphone <arg> (Untuk memasukan data nomer handphone anda)"
+				send "&e/profile setline <arg> (Untuk memasukan data id line anda)"
+				send "&e/profile setdiscordtag <arg> (Untuk memasukan data discord tag anda)"
+				send "&e/profile setchannel <arg> (Untuk memasukan data channel youtube anda)"
+				send "&4&lWARNING!!!"
+				send "&cInformasi yang tidak valid akan membuat anda kehilangan akun"
+				stop
+		if arg 1 is "info":
+			send "{@prefix} &2your profile are"
+			send "&2Name &3: &e%{vprofile.name.%player%}%"
+			send "&2Email &3: &e%{vprofile.email.%player%}%"
+			send "&2Phone &3: &e%{vprofile.phone.%player%}%"
+			send "&2Line ID &3: &e%{vprofile.line.%player%}%"
+			send "&2Discord Tag &3: &e%{vprofile.discordtag.%player%}%"
+			send "&2YT Channel &3: &e%{vprofile.channel.%player%}%"
+			stop
+		if arg 1 is "setname":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				wait 1 tick
+				set {vprofile.name.%player%} to arg 2
+				send "&2You set your name to &e%arg 2%"
+				stop
+		if arg 1 is "setemail":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				wait 1 tick
+				set {vprofile.email.%player%} to arg 2
+				send "&2You set your email to &e%arg 2%"
+				stop
+		if arg 1 is "setphone":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				wait 1 tick
+				set {vprofile.phone.%player%} to arg 2
+				send "&2You set your phone number to &e%arg 2%"
+				stop
+		if arg 1 is "setline":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				wait 1 tick
+				set {vprofile.line.%player%} to arg 2
+				send "&2You set your id line to &e%arg-2%"
+				stop
+		if arg 1 is "setdiscordtag":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				wait 1 tick
+				set {vprofile.discordtag.%player%} to arg 2
+				send "&2You set your Discord Tag to &e%arg-2%"
+				stop
+		if arg 1 is "setchannel":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				wait 1 tick
+				set {vprofile.channel.%player%} to arg 2
+				send "&2You set your Youtube Channel to &e%arg-2%"
+				stop
+				
+command /profileadmin [<text>] [<offlineplayer>] [<text>]:
+	permission: veralust.profileadmin
+	permission message: &cInsufficient Permission
+	executable by: player or console
+	trigger:
+		if arg 1 is not set:
+			send "{@prefix}"
+			send "&2This Function is not yet implemented"
+			stop
+		if arg 1 is "setname":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profileadmin help"
+				stop
+			if arg 2 is set:
+				if arg 3 is not set:
+					send "{@prefix} &3You must set third argument, check /profileadmin help"
+					stop
+				if arg 3 is set:
+					wait 1 tick
+					set {vprofile.name.%arg-2%} to arg 3
+					send "&2You set &b&l%arg-2%&2's name to &e%arg 3%"
+					stop
+		if arg 1 is "setemail":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profileadmin help"
+				stop
+			if arg 2 is set:
+				if arg 3 is not set:
+					send "{@prefix} &3You must set third argument, check /profileadmin help"
+					stop
+				if arg 3 is set:
+					wait 1 tick
+					set {vprofile.email.%arg-2%} to arg 3
+					send "&2You set &b&l%arg-2%&2's email to &e%arg 3%"
+					stop
+		if arg 1 is "setphone":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profileadmin help"
+				stop
+			if arg 2 is set:
+				if arg 3 is not set:
+					send "{@prefix} &3You must set third argument, check /profileadmin help"
+					stop
+				if arg 3 is set:
+					wait 1 tick
+					set {vprofile.phone.%arg-2%} to arg 3
+					send "&2You set &b&l%arg-2%&2's phone to &e%arg 3%"
+					stop
+		if arg 1 is "setline":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				if arg 3 is not set:
+					send "{@prefix} &3You must set third argument, check /profileadmin help"
+					stop
+				if arg 3 is set:
+					wait 1 tick
+					set {vprofile.line.%arg-2%} to arg 3
+					send "&2You set &b&l%arg-2%&2's line to &e%arg 3%"
+					stop
+		if arg 1 is "setdiscordtag":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				if arg 3 is not set:
+					send "{@prefix} &3You must set third argument, check /profileadmin help"
+					stop
+				if arg 3 is set:
+					wait 1 tick
+					set {vprofile.discordtag.%arg-2%} to arg 3
+					send "&2You set &b&l%arg-2%&2's discordtag to &e%arg 3%"
+					stop
+		if arg 1 is "setchannel":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				if arg 3 is not set:
+					send "{@prefix} &3You must set third argument, check /profileadmin help"
+					stop
+				if arg 3 is set:
+					wait 1 tick
+					set {vprofile.channel.%arg-2%} to arg 3
+					send "&2You set &b&l%arg-2%&2's channel to &e%arg 3%"
+					stop
+		if arg 1 is "help":
+			if arg 2 is not set:
+				send "{@prefix}"
+				send "&2This Function is not yet implemented"
+				stop
+			if arg 2 is set:
+				send "{@prefix} &3Wrong Usage, check /profileadmin help"
+				stop
+		if arg 1 is "show":
+			if arg 2 is not set:
+				send "{@prefix} &3You must set second argument, check /profile help"
+				stop
+			if arg 2 is set:
+				send "{@prefix} &b&l%arg-2% s Profile are"
+				send "&2Name &3: &e%{vprofile.name.%arg-2%}%"
+				send "&2Email &3: &e%{vprofile.email.%arg-2%}%"
+				send "&2Phone &3: &e%{vprofile.phone.%arg-2%}%"
+				send "&2Line ID &3: &e%{vprofile.line.%arg-2%}%"
+				send "&2Discord Tag &3: &e%{vprofile.discordtag.%arg-2%}%"
+				send "&2YT Channel &3: &e%{vprofile.channel.%arg-2%}%"
+				stop
+				
+# ====================================================================
+# Below are Commend Skript
+# Commend are just for fun :3
+
+command /commend [<player>]:
+	description: Commend system to praise other player
+	permission: veralust.commend
+	permission message: {@permissionmessage}
+	trigger:
+		set {_p} to "%player%" parsed as player
+		if arg-1 is not set:
+			send "{@prefix} &3You must type player''s name"
+			stop
+		if arg-1 is "%{_p}%":
+			send "{@prefix} &3You cannot commend yourself morron"
+			stop
+		if arg-1 is not "%{_p}%":
+			add 1 to {commend.%arg-1%}
+			send "{@prefix} &b&l%{arg-1}% &3is successfully commended"
+			send "{@prefix} &b&l%{_p}% &3is commending you" to arg 1
+			stop
+			
+command /commends:
+	description: Show how much your commends
+	permission: veralust.command
+	permission message: {@permissionmessage}
+	trigger:
+		wait 1 tick
+		send "{@prefix} &3You got &b&l%{commend.%player%}% &3Commends"
+		stop
+
+command /admincommend [<offlineplayer>] [<text>] [<text>]:
+	description: Commend system for admins
+	permission: veralust.admincommend
+	permission message: {@permissionmessage}
+	trigger:
+		if arg-1 is not set:
+			send "{@prefix} &3You must type player''s name"
+			stop
+		if arg-1 is set:
+			if arg-2 is not set:
+				send "{@prefix} &3Wrong Usage, try /admincommend help"
+				stop
+			if arg-2 is "help":
+				send "{@prefix} &3Powered by Hubcore {@Version}"
+				send "&2subcommand are"
+				send "&2setcommend"
+				stop
+			if arg-2 is "setcommend":
+				if arg-3 is not set:
+					send "{@prefix} &3Argument 3 must be integer, and cannot be blank"
+					stop
+				if arg-3 is set:
+					wait 1 tick
+					set {commend.%arg-1%} to arg-3
+					send "{@prefix} &b&l%arg-1%'s &3Commend has been set to %arg-3%"
+					stop
+					
+# ============================================================
+# Below are Skript for Giveaway
+# Don't change anything here, no matter what..
+# ONLY an experienced ones are allowed to..
+# Left nothing wrong as it would be
+
+command /giveaway [<text>] [<text>] [<text>]:
+	description: For giveaway purpose
+	permission: veralust.giveaway
+	permission message: {@permissionmessage}
+	trigger:
+		if arg-1 is not set:
+			send "{@prefix} &3Giveaway are crucial, Try /giveaway help"
+			stop
+		if arg-1 is not "help":
+			send "{@prefix} &3Giveaway are crucial, Try /giveaway help"
+			stop
+		if arg-1 is "help":
+			send "{@prefix} &3This function is not implemented"
+			stop
