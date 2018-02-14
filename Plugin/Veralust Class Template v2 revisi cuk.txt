@@ -1,0 +1,82 @@
+###Main Class and Class Tree Progression Template###
+#
+#
+
+
+				[ Warrior ]
+2nd Class
+[ Sword Arc ]					[ Mercenary ]
+3rd Class
+[ Gladiator ]					[ Paladin ]
+Ascension
+[ Lunar Knight ]				[ Royal Knight ]
+Build 1 : Physical Damage Based Class
+Build 2 : High Defense and Health
+				[ Rogue ]
+2nd Class
+[ Assasin ]						[ Trickster ]
+3rd Class
+[ Chaser ]						[ Blade Dancer ]
+Ascension
+[ Night Raven ]					[ Illusionist ]
+Build 1 : Close-Combat to Middle-Range, Using Chain Reactions
+Build 2 : Traps and Illusion
+				[ Archer ]
+2nd Class
+[ Hunter ]						[ Acrobatics ]
+3rd Class
+[ Sniper ]						[ Tempest ]
+Ascension
+[ Artillery ]					[ Wind Walker ]
+Build 1 : Far-Away Pure Sniper Class, Perfect to take down enemies at distance
+Build 2 : Middle-Range Class Archer, Using power of the wind to get close to enemy
+				[ Sorcerer ]
+2nd Class
+[ Elementalist ]				[ Arcana Knight ]
+3rd Class
+[ Pyromancer ]					[ Cyroknight ]
+Ascension
+[ Eleastra ]					[ Saleana ]
+Build 1 : Elemental Cast-Based Magic User
+Build 2 : Close-Combat Knight using Swords and Magic
+				[ Monk ]
+2nd Class
+[ Reflector ]					[ Fighter ]
+3rd Class
+[ Balancer ]					[ Barbarian ]
+Ascension
+[ Exorcist ]					[ Berserker ]
+Build 1 : Counter-Based Class, Reflecting Damage with High Elemental Resistance
+Build 2 : Sacrifice Defense and Elemental Resistance for Higher Damage
+				[ Acolyte ]
+2nd Class
+[ Saint ]						[ Inquistor ]
+3rd Class
+[ Light Maiden ]				[ Dark Cultist ]
+Ascension
+[ Kannagi ]						[ Necromancer ]
+Build 1 : Focus on Healing and Removing Debuff
+Build 2 : Raise Dead, Demon Contract, and Enemy Debuffing
+				[ Novice ]
+2nd Class
+[ Survivalist ]					[ Tinkerer ]
+3rd Class
+[ Herbalist ]					[ Engineer ]
+Ascension
+[ Adept ]						[ Shooting Star ]
+Build 1 : Adept Skill-Based Class
+Build 2 : Tinkering Skill-Based Class
+
+Warrior - Close-Quarter Combat with Stable Damage and Average Defense, capable of blowing enemy apart. Recomended Weapons are Swords and Axes
+
+Rogue - Stealth Class with Cloak and Daggers, works fine with Swords and Bows. Recomended Weapons are Swords and Bows
+
+Sorcerer - Argent Class with both Swords and Spellcasting. Able to Full-Potent Spellcasting with Staff. Recomended Weapons are Swords
+
+Archer - Ranged Archetype Class with Sharpshooter Adept Skill. Using Various Arrow and Trait to Exploits enemy Weakness. Recomended Weapons are Bows
+
+Monk - A Brutal Massive Class, using Barehand and high maximum health to maintain the survive capaility. High elemental resistance and Brutal skill traits make him able to Exploits enemy Weakness easily. Recomended Weapons are Axes and Barehand
+
+Acolyte - Supportive Type Class with Unique Battle Style. Capable of blowing debuff out of party, summoning totem to heal ally, and hold the line of combat using his Familiar. Recomended Weapons are Swords
+
+Novice - Hybrid Type Class, using Various Weapons and Armor to Exploit it's ability. Burn the enemies with your own unique playstyle, and achieve victory. Recomended Weapons are Limitless
