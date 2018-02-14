@@ -1,0 +1,79 @@
+WhirlingSlash:
+  name: 'WhirlingSlash'
+  type: 'AOE Attack Strike'
+  max-level: 10
+  skill-req: ''
+  skill-req-lvl: 2
+  needs-permission: 'False'
+  msg: '&4{player} &2has cast &4{skill}'
+  combo: 'L L L'
+  indicator: '2D'
+  icon: 'Fire'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}&2Level: {attr:level}'
+  - '{req:cost}&2Cost: {attr:cost}'
+  - ''
+  - '&2Surrounded By Enemy Is Usual For Warrior.'
+  - '&6[&2Dealt AOE Damage To Surrounding.&6]'
+  - ''
+  - '&2Damage: {damage}'
+  - '&2Mana: {attr:mana}'
+  - '&2Radius: {radius}'
+  - '&2Cooldown: {attr:cooldown}'
+  attributes:
+    level-base: 1
+    level-scale: 1
+    cost-base: 1
+    cost-scale: 1
+    cooldown-base: 10
+    cooldown-scale: 0
+    mana-base: 13
+    mana-scale: 0
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - ''
+  components:
+    Cast-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Area-b:
+          type: 'target'
+          data:
+            icon-key: 'radius'
+            radius-base: 5
+            radius-scale: 0
+            group: 'Enemy'
+            wall: 'False'
+            caster: 'False'
+            max-base: 99
+            max-scale: 0
+          children:
+            Damage-c:
+              type: 'mechanic'
+              data:
+                icon-key: 'damage'
+                counts: 'True'
+                type: 'Damage'
+                value-base: 9
+                value-scale: 2
+                true: 'False'
+                classifier: 'default'
+            Launch-d:
+              type: 'mechanic'
+              data:
+                icon-key: ''
+                counts: 'True'
+                relative: 'Target'
+                forward-base: -4
+                forward-scale: 0
+                upward-base: 5
+                upward-scale: 0.5
+                right-base: 0
+                right-scale: 0

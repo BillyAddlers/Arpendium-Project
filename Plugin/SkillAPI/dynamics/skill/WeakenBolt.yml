@@ -1,0 +1,108 @@
+WeakenBolt:
+  name: 'WeakenBolt'
+  type: 'AOE Weaken Damage'
+  max-level: 10
+  skill-req: ''
+  skill-req-lvl: 2
+  needs-permission: 'False'
+  msg: '&6{player} &2has cast &6{skill}'
+  combo: 'L L L'
+  indicator: '2D'
+  icon: 'Eye Of Ender'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}&2Level: {attr:level}'
+  - '{req:cost}&2Cost: {attr:cost}'
+  - ''
+  - '&2Mage First Savior Skill.'
+  - '&6[&2Cast a lightning that do AOE Weaknes Damage.&6]'
+  - ''
+  - '&2Damage: {damage}'
+  - '&2Mana: {attr:mana}'
+  - '&2Weaknes Effect Duration: {duration}'
+  - '&2Cooldown: {attr:cooldown}'
+  attributes:
+    level-base: 1
+    level-scale: 1
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 10
+    cooldown-scale: 0
+    mana-base: 15
+    mana-scale: 0
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - ''
+  components:
+    Cast-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Linear-b:
+          type: 'target'
+          data:
+            icon-key: ''
+            range-base: 6
+            range-scale: 1
+            tolerance-base: 5
+            tolerance-scale: 0
+            group: 'Enemy'
+            wall: 'False'
+            caster: 'False'
+            max-base: 99
+            max-scale: 0
+          children:
+            Lightning-c:
+              type: 'mechanic'
+              data:
+                icon-key: ''
+                counts: 'True'
+                damage: 'True'
+                forward-base: 0
+                forward-scale: 0
+                right-base: 5
+                right-scale: 1
+            Area-d:
+              type: 'target'
+              data:
+                icon-key: ''
+                radius-base: 6
+                radius-scale: 0
+                group: 'Enemy'
+                wall: 'False'
+                caster: 'False'
+                max-base: 99
+                max-scale: 0
+            Potion-e:
+              type: 'condition'
+              data:
+                icon-key: ''
+                type: 'Active'
+                potion: 'Weakness'
+                min-rank-base: 2
+                min-rank-scale: 0
+                max-rank-base: 2
+                max-rank-scale: 0
+              children:
+                Passive-f:
+                  type: 'mechanic'
+                  data:
+                    icon-key: 'duration'
+                    counts: 'True'
+                    seconds-base: 6
+                    seconds-scale: 1
+            Damage-g:
+              type: 'mechanic'
+              data:
+                icon-key: 'damage'
+                counts: 'True'
+                type: 'Damage'
+                value-base: 3
+                value-scale: 1
+                true: 'False'
+                classifier: 'default'
