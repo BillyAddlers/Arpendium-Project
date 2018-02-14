@@ -1,0 +1,92 @@
+RegenerationArea:
+  name: 'RegenerationArea'
+  type: 'Buff'
+  max-level: 8
+  skill-req: ''
+  skill-req-lvl: 1
+  needs-permission: 'False'
+  msg: '&1{player} &2has cast &1{skill}'
+  combo: 'R R R'
+  indicator: '2D'
+  icon: 'Iron Ingot'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}Level: {attr:level}'
+  - '{req:cost}Cost: {attr:cost}'
+  - ''
+  - '&2Increase Regeneration Rate'
+  - '&2For {regen} Seconds'
+  - ''
+  - '&2Mana: {attr:mana}'
+  - '&2Cooldown: {attr:cooldown}'
+  attributes:
+    level-base: 1
+    level-scale: 0
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 5
+    cooldown-scale: -0.3
+    mana-base: 10
+    mana-scale: 0
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - ''
+  components:
+    Cast-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Area-b:
+          type: 'target'
+          data:
+            icon-key: 'area'
+            radius-base: 3
+            radius-scale: 1
+            group: 'Ally'
+            wall: 'False'
+            caster: 'True'
+            max-base: 99
+            max-scale: 0
+          children:
+            Potion-c:
+              type: 'mechanic'
+              data:
+                icon-key: 'regen'
+                counts: 'True'
+                potion: 'Regeneration'
+                ambient: 'True'
+                tier-base: 1
+                tier-scale: 0
+                seconds-base: 5
+                seconds-scale: 1
+            Particle Animation-d:
+              type: 'mechanic'
+              data:
+                icon-key: ''
+                counts: 'True'
+                steps: 1
+                frequency: 0.05
+                angle: 0
+                start: 0
+                duration-base: 5
+                duration-scale: 0
+                h-translation-base: 0
+                h-translation-scale: 0
+                v-translation-base: 0
+                v-translation-scale: 0
+                h-cycles: 1
+                v-cycles: 1
+                particle: 'Heart'
+                arrangement: 'Sphere'
+                radius-base: 5
+                radius-scale: 0
+                particles-base: 20
+                particles-scale: 0
+                forward: 0
+                upward: 0
+                right: 0

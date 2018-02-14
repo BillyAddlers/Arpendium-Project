@@ -1,0 +1,107 @@
+Heal:
+  name: 'Heal'
+  type: 'Healing'
+  max-level: 8
+  skill-req: ''
+  skill-req-lvl: 1
+  needs-permission: 'False'
+  msg: '&1{player} &2has cast &1{skill}'
+  combo: 'L L L'
+  indicator: '2D'
+  icon: 'Apple'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}Level: {attr:level}'
+  - '{req:cost}Cost: {attr:cost}'
+  - ''
+  - '&2What does healer do?, Of course healing :D'
+  - '&2Heal Allies for {attr:heal.value} Health'
+  - ''
+  - '&2Heal Amount: {heal}'
+  - '&2Mana: {attr:mana}'
+  - '&2Cooldown: {attr:cooldown}'
+  attributes:
+    level-base: 1
+    level-scale: 0
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 9
+    cooldown-scale: -0.7
+    mana-base: 10
+    mana-scale: 2
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - ''
+  components:
+    Cast-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Single-b:
+          type: 'target'
+          data:
+            icon-key: 'healing'
+            range-base: 5
+            range-scale: 0
+            tolerance-base: 4
+            tolerance-scale: 0
+            group: 'Ally'
+            wall: 'False'
+          children:
+            Offhand-c:
+              type: 'condition'
+              data:
+                icon-key: ''
+                check-mat: 'True'
+                material: 'Stick'
+                check-data: 'False'
+                check-lore: 'False'
+                check-name: 'False'
+                regex: 'False'
+              children:
+                Heal-d:
+                  type: 'mechanic'
+                  data:
+                    icon-key: 'heal'
+                    counts: 'True'
+                    type: 'Health'
+                    value-base: 15
+                    value-scale: 2
+                Particle Animation-e:
+                  type: 'mechanic'
+                  data:
+                    icon-key: 'particle1'
+                    counts: 'True'
+                    steps: 1
+                    frequency: 0.05
+                    angle: 0
+                    start: 0
+                    duration-base: 1
+                    duration-scale: 0
+                    h-translation-base: 0
+                    h-translation-scale: 0
+                    v-translation-base: 0
+                    v-translation-scale: 0
+                    h-cycles: 1
+                    v-cycles: 1
+                    particle: 'Happy Villager'
+                    arrangement: 'Circle'
+                    radius-base: 4
+                    radius-scale: 0
+                    particles-base: 20
+                    particles-scale: 0
+                    direction: 'XZ'
+                    visible-radius: 25
+                    dx: 0
+                    dy: 0
+                    dz: 0
+                    speed: 1
+                    amount: 1
+                    forward: 0
+                    upward: 0
+                    right: 0
