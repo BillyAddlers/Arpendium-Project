@@ -1,8 +1,6 @@
-# Tinkerer 1st Skill Template #
-
 JackBomb:
   name: 'JackBomb'
-  type: 'Area'
+  type: 'AOE Attack'
   max-level: 8
   skill-req: ''
   skill-req-lvl: 1
@@ -48,7 +46,7 @@ JackBomb:
           type: 'target'
           data:
             icon-key: 'area'
-            radius-base: 3
+            radius-base: 4
             radius-scale: 1
             group: 'Enemy'
             wall: 'False'
@@ -60,7 +58,7 @@ JackBomb:
               type: 'mechanic'
               data:
                 icon-key: 'explosion'
-                counts: 'True'
+                counts: 'False'
                 power-base: 3
                 power-scale: 1
                 damage: 'False'

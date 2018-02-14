@@ -1,0 +1,103 @@
+Bloodborne:
+  name: 'Bloodborne'
+  type: 'Passive Enchantment'
+  max-level: 5
+  skill-req: ''
+  skill-req-lvl: 1
+  needs-permission: 'False'
+  msg: '&6{player} &2has cast &6{skill}'
+  combo: ''
+  indicator: '2D'
+  icon: 'Jack O Lantern'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}Level: {attr:level}'
+  - '{req:cost}Cost: {attr:cost}'
+  - ''
+  - "&2Using Vampire's Bloodborne, they can awaken their true power"
+  - '&2when in pinch'
+  - '&2Threshold: &640%'
+  - '&2Immune: {attr:immune.seconds}'
+  - '&2Aggro: {attr:aggro.amount}'
+  attributes:
+    level-base: 1
+    level-scale: 0
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 0
+    cooldown-scale: 0
+    mana-base: 0
+    mana-scale: 0
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - ''
+  components:
+    Initialize-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Health-b:
+          type: 'condition'
+          data:
+            icon-key: 'threshold'
+            type: 'Health'
+            min-value-base: 0
+            min-value-scale: 0
+            max-value-base: 40
+            max-value-scale: 0
+          children:
+            Taunt-c:
+              type: 'mechanic'
+              data:
+                icon-key: 'aggro'
+                counts: 'True'
+                amount-base: -2
+                amount-scale: -1
+            Particle Animation-d:
+              type: 'mechanic'
+              data:
+                icon-key: ''
+                counts: 'True'
+                steps: 1
+                frequency: 0.05
+                angle: 0
+                start: 0
+                duration-base: 5
+                duration-scale: 0
+                h-translation-base: 0
+                h-translation-scale: 0
+                v-translation-base: 0
+                v-translation-scale: 0
+                h-cycles: 1
+                v-cycles: 1
+                particle: 'Angry Villager'
+                arrangement: 'Circle'
+                radius-base: 4
+                radius-scale: 0
+                particles-base: 20
+                particles-scale: 0
+                direction: 'XZ'
+                visible-radius: 25
+                dx: 0
+                dy: 0
+                dz: 0
+                speed: 1
+                amount: 1
+                forward: 0
+                upward: 0
+                right: 0
+            Immunity-e:
+              type: 'mechanic'
+              data:
+                icon-key: 'immune'
+                counts: 'True'
+                type: 'Entity Attack'
+                seconds-base: 3
+                seconds-scale: 0
+                multiplier-base: 0
+                multiplier-scale: 0

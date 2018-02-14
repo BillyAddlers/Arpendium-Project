@@ -1,0 +1,98 @@
+Bloodbath:
+  name: 'Bloodbath'
+  type: 'Passive Enchantment'
+  max-level: 10
+  skill-req: ''
+  skill-req-lvl: 1
+  needs-permission: 'False'
+  msg: '&6{player} &2has cast &6{skill}'
+  combo: ''
+  indicator: '2D'
+  icon: 'Jack O Lantern'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}Level: {attr:level}'
+  - '{req:cost}Cost: {attr:cost}'
+  - ''
+  - '&2Vampire are famous of their bloodbath ability'
+  - '&2Imbued attack with Lifesteal'
+  - '&2Lifesteal: {attr:heal.value}'
+  - '&2Threshold: &6Below 75%'
+  attributes:
+    level-base: 1
+    level-scale: 0
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 0
+    cooldown-scale: 0
+    mana-base: 0
+    mana-scale: 0
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - ''
+  components:
+    Physical Damage-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+        mana: 'False'
+        cooldown: 'False'
+        target: 'True'
+        type: 'Melee'
+        dmg-min: 0
+        dmg-max: 999
+      children:
+        Single-b:
+          type: 'target'
+          data:
+            icon-key: ''
+            range-base: 3
+            range-scale: 0
+            tolerance-base: 4
+            tolerance-scale: 0
+            group: 'Enemy'
+            wall: 'False'
+          children:
+            Health-c:
+              type: 'condition'
+              data:
+                icon-key: 'threshold'
+                type: 'Percent'
+                min-value-base: 0
+                min-value-scale: 0
+                max-value-base: 75
+                max-value-scale: 2
+              children:
+                Heal-d:
+                  type: 'mechanic'
+                  data:
+                    icon-key: 'heal'
+                    counts: 'True'
+                    type: 'Percent'
+                    value-base: 1
+                    value-scale: 1
+                Particle-e:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    particle: 'Happy Villager'
+                    arrangement: 'Circle'
+                    radius-base: 4
+                    radius-scale: 0
+                    particles-base: 4
+                    particles-scale: 0
+                    direction: 'XZ'
+                    visible-radius: 25
+                    dx: 0
+                    dy: 0
+                    dz: 0
+                    speed: 1
+                    amount: 1
+                    forward: 0
+                    upward: 0
+                    right: 0

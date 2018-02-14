@@ -8,7 +8,7 @@ Bloodrage:
   msg: '&4{player} &2has cast &4{skill}'
   combo: 'L L L'
   indicator: '2D'
-  icon: 'Jack O Lantern'
+  icon: 'Acacia Door'
   icon-data: 0
   icon-lore:
   - '&d{name} &7({level}/{max})'

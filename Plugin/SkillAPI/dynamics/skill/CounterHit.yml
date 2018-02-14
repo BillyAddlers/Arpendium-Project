@@ -1,6 +1,6 @@
 CounterHit:
   name: 'CounterHit'
-  type: 'Counter Hit Dealt By Enemy'
+  type: 'Buff'
   max-level: 10
   skill-req: ''
   skill-req-lvl: 2
@@ -18,10 +18,10 @@ CounterHit:
   - '{req:cost}&2Cost: {attr:cost}'
   - ''
   - '&2You better be careful when u hit me......'
-  - '&6[&2Apply Immunity to enemy attack and reflect it with slow effect.&6]'
+  - '&2Apply Immunity to enemy attack and reflect it with slow effect'
   - ''
-  - '&2Duration: {immun}'
-  - '&2Slow Effect Duration: {slow}'
+  - '&2Duration: {attr:immun.seconds}'
+  - '&2Slow Effect Duration: {attr:slow.seconds}'
   - '&2Mana: {attr:mana}'
   - '&2Cooldown: {attr:cooldown}'
   attributes:
@@ -31,7 +31,7 @@ CounterHit:
     cost-scale: 0
     cooldown-base: 12
     cooldown-scale: 0
-    mana-base: 15
+    mana-base: 10
     mana-scale: 0
     points-spent-req-base: 0
     points-spent-req-scale: 0
@@ -43,13 +43,23 @@ CounterHit:
       data:
         icon-key: ''
       children:
-        Trigger-b:
+        Immunity-b:
+          type: 'mechanic'
+          data:
+            icon-key: 'immun'
+            counts: 'True'
+            type: 'Entity Attack'
+            seconds-base: 8
+            seconds-scale: 0
+            multiplier-base: 2
+            multiplier-scale: 0
+        Trigger-c:
           type: 'mechanic'
           data:
             icon-key: ''
             counts: 'True'
             trigger: 'Took Physical Damage'
-            duration-base: 8
+            duration-base: 1
             duration-scale: 0
             stackable: 'True'
             once: 'True'
@@ -58,16 +68,6 @@ CounterHit:
             dmg-min: 0
             dmg-max: 100
           children:
-            Immunity-c:
-              type: 'mechanic'
-              data:
-                icon-key: 'immun'
-                counts: 'True'
-                type: 'Entity Attack'
-                seconds-base: 8
-                seconds-scale: 0
-                multiplier-base: 0
-                multiplier-scale: 0
             Flag-d:
               type: 'mechanic'
               data:
@@ -75,7 +75,7 @@ CounterHit:
                 counts: 'True'
                 key: 'key'
                 seconds-base: 5
-                seconds-scale: 1
+                seconds-scale: 0
             Flag-e:
               type: 'condition'
               data:

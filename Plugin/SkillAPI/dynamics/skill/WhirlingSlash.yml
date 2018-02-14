@@ -1,6 +1,6 @@
 WhirlingSlash:
   name: 'WhirlingSlash'
-  type: 'AOE Attack Strike'
+  type: 'AOE Attack'
   max-level: 10
   skill-req: ''
   skill-req-lvl: 1
@@ -18,9 +18,10 @@ WhirlingSlash:
   - '{req:cost}&2Cost: {attr:cost}'
   - ''
   - '&2Surrounded By Enemy Is Usual For Warrior.'
-  - '&2Dealt AOE Damage To Surrounding in 7 Radius.'
+  - '&2Dealt AOE Damage To Surrounding'
   - ''
   - '&2Damage: {attr:damage.value}'
+  - '&2Radius: {attr:radius.radius}'
   - '&2Mana: {attr:mana}'
   - '&2Cooldown: {attr:cooldown}'
   attributes:
@@ -35,76 +36,164 @@ WhirlingSlash:
     points-spent-req-base: 0
     points-spent-req-scale: 0
     incompatible:
-    - ''
+    - 'PanicHowl'
   components:
     Cast-a:
       type: 'trigger'
       data:
         icon-key: ''
       children:
-        Area-b:
-          type: 'target'
+        Item-b:
+          type: 'condition'
           data:
             icon-key: ''
-            radius-base: 7
-            radius-scale: 0
-            group: 'Enemy'
-            wall: 'False'
-            caster: 'False'
-            max-base: 99
-            max-scale: 0
+            check-mat: 'False'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'True'
+            name: 'Sword'
+            regex: 'False'
           children:
-            Damage-c:
-              type: 'mechanic'
+            Area-c:
+              type: 'target'
               data:
-                icon-key: 'damage'
-                counts: 'True'
-                type: 'Damage'
-                value-base: 9
-                value-scale: 2
-                true: 'False'
-                classifier: 'default'
-            Launch-d:
-              type: 'mechanic'
-              data:
-                icon-key: ''
-                counts: 'True'
-                relative: 'Target'
-                forward-base: -4
-                forward-scale: 0
-                upward-base: 5
-                upward-scale: 0.5
-                right-base: 0
-                right-scale: 0
-            Particle Animation-e:
-              type: 'mechanic'
-              data:
-                icon-key: ''
-                counts: 'True'
-                steps: 1
-                frequency: 0.05
-                angle: 0
-                start: 0
-                duration-base: 5
-                duration-scale: 0
-                h-translation-base: 0
-                h-translation-scale: 0
-                v-translation-base: 0
-                v-translation-scale: 0
-                h-cycles: 1
-                v-cycles: 1
-                particle: 'Huge Explosion'
-                arrangement: 'Hemisphere'
-                radius-base: 4
+                icon-key: 'radius'
+                radius-base: 7
                 radius-scale: 0
-                particles-base: 20
-                particles-scale: 0
-                visible-radius: 25
-                dx: 0
-                dy: 0
-                dz: 0
-                speed: 1
-                amount: 1
-                forward: 0
-                upward: 0
-                right: 0
+                group: 'Enemy'
+                wall: 'False'
+                caster: 'False'
+                max-base: 99
+                max-scale: 0
+              children:
+                Damage-d:
+                  type: 'mechanic'
+                  data:
+                    icon-key: 'damage'
+                    counts: 'True'
+                    type: 'Damage'
+                    value-base: 9
+                    value-scale: 2
+                    true: 'False'
+                    classifier: 'default'
+                Launch-e:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    relative: 'Target'
+                    forward-base: -4
+                    forward-scale: 0
+                    upward-base: 5
+                    upward-scale: 0.5
+                    right-base: 0
+                    right-scale: 0
+                Particle Animation-f:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    steps: 1
+                    frequency: 0.05
+                    angle: 0
+                    start: 0
+                    duration-base: 5
+                    duration-scale: 0
+                    h-translation-base: 0
+                    h-translation-scale: 0
+                    v-translation-base: 0
+                    v-translation-scale: 0
+                    h-cycles: 1
+                    v-cycles: 1
+                    particle: 'Huge Explosion'
+                    arrangement: 'Hemisphere'
+                    radius-base: 4
+                    radius-scale: 0
+                    particles-base: 20
+                    particles-scale: 0
+                    visible-radius: 25
+                    dx: 0
+                    dy: 0
+                    dz: 0
+                    speed: 1
+                    amount: 1
+                    forward: 0
+                    upward: 0
+                    right: 0
+        Item-g:
+          type: 'condition'
+          data:
+            icon-key: ''
+            check-mat: 'False'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'True'
+            name: 'Axe'
+            regex: 'False'
+          children:
+            Area-h:
+              type: 'target'
+              data:
+                icon-key: ''
+                radius-base: 7
+                radius-scale: 0
+                group: 'Enemy'
+                wall: 'False'
+                caster: 'False'
+                max-base: 99
+                max-scale: 0
+              children:
+                Damage-i:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    type: 'Damage'
+                    value-base: 9
+                    value-scale: 2
+                    true: 'False'
+                    classifier: 'default'
+                Launch-j:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    relative: 'Target'
+                    forward-base: -4
+                    forward-scale: 0
+                    upward-base: 5
+                    upward-scale: 0.5
+                    right-base: 0
+                    right-scale: 0
+                Particle Animation-k:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    steps: 1
+                    frequency: 0.05
+                    angle: 0
+                    start: 0
+                    duration-base: 5
+                    duration-scale: 0
+                    h-translation-base: 0
+                    h-translation-scale: 0
+                    v-translation-base: 0
+                    v-translation-scale: 0
+                    h-cycles: 1
+                    v-cycles: 1
+                    particle: 'Huge Explosion'
+                    arrangement: 'Hemisphere'
+                    radius-base: 4
+                    radius-scale: 0
+                    particles-base: 20
+                    particles-scale: 0
+                    visible-radius: 25
+                    dx: 0
+                    dy: 0
+                    dz: 0
+                    speed: 1
+                    amount: 1
+                    forward: 0
+                    upward: 0
+                    right: 0

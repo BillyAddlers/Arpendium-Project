@@ -1,16 +1,14 @@
-# Sorcerer 1st Skill Template #
-
 WeakenBolt:
   name: 'WeakenBolt'
-  type: 'AOE Weaken Damage'
+  type: 'AOE Debuff'
   max-level: 10
   skill-req: ''
   skill-req-lvl: 2
   needs-permission: 'False'
   msg: '&6{player} &2has cast &6{skill}'
-  combo: 'L L L'
+  combo: 'R R R'
   indicator: '2D'
-  icon: 'Eye Of Ender'
+  icon: 'Acacia Door'
   icon-data: 0
   icon-lore:
   - '&d{name} &7({level}/{max})'
@@ -20,12 +18,11 @@ WeakenBolt:
   - '{req:cost}&2Cost: {attr:cost}'
   - ''
   - '&2Mage First Savior Skill.'
-  - '&6[&2Cast a lightning that do AOE Weaknes Damage.&6]'
+  - '&2Cast a lightning that do AOE Weaknes Damage'
   - ''
-  - '&2Damage: {damage}'
-  - '&2Range: {range}'
-  - '&2Weaknes Effect Duration: {duration}'
+  - '&2Damage: {attr:damage.value}'
   - '&2Mana: {attr:mana}'
+  - '&2Weaknes Effect Duration: {attr:duration.seconds}'
   - '&2Cooldown: {attr:cooldown}'
   attributes:
     level-base: 1
@@ -39,73 +36,85 @@ WeakenBolt:
     points-spent-req-base: 0
     points-spent-req-scale: 0
     incompatible:
-    - ''
+    - 'IceSigil'
   components:
     Cast-a:
       type: 'trigger'
       data:
         icon-key: ''
       children:
-        Linear-b:
-          type: 'target'
+        Item-b:
+          type: 'condition'
           data:
             icon-key: ''
-            range-base: 6
-            range-scale: 1
-            tolerance-base: 5
-            tolerance-scale: 0
-            group: 'Enemy'
-            wall: 'False'
-            caster: 'False'
-            max-base: 99
-            max-scale: 0
+            check-mat: 'False'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'True'
+            name: 'Staff'
+            regex: 'False'
           children:
-            Lightning-c:
-              type: 'mechanic'
-              data:
-                icon-key: ''
-                counts: 'True'
-                damage: 'True'
-                forward-base: 0
-                forward-scale: 0
-                right-base: 5
-                right-scale: 1
-            Area-d:
+            Linear-c:
               type: 'target'
               data:
                 icon-key: ''
-                radius-base: 6
-                radius-scale: 0
+                range-base: 12
+                range-scale: 0
+                tolerance-base: 7
+                tolerance-scale: 0
                 group: 'Enemy'
-                wall: 'False'
+                wall: 'True'
                 caster: 'False'
                 max-base: 99
                 max-scale: 0
-            Potion-e:
-              type: 'condition'
-              data:
-                icon-key: ''
-                type: 'Active'
-                potion: 'Weakness'
-                min-rank-base: 2
-                min-rank-scale: 0
-                max-rank-base: 2
-                max-rank-scale: 0
               children:
-                Passive-f:
+                Lightning-d:
                   type: 'mechanic'
                   data:
-                    icon-key: 'duration'
+                    icon-key: ''
                     counts: 'True'
-                    seconds-base: 6
-                    seconds-scale: 1
-            Damage-g:
-              type: 'mechanic'
-              data:
-                icon-key: 'damage'
-                counts: 'True'
-                type: 'Damage'
-                value-base: 3
-                value-scale: 1
-                true: 'False'
-                classifier: 'default'
+                    damage: 'True'
+                    forward-base: 0
+                    forward-scale: 0
+                    right-base: 5
+                    right-scale: 1
+                Area-e:
+                  type: 'target'
+                  data:
+                    icon-key: ''
+                    radius-base: 6
+                    radius-scale: 0
+                    group: 'Enemy'
+                    wall: 'False'
+                    caster: 'False'
+                    max-base: 99
+                    max-scale: 0
+                  children:
+                    Potion-f:
+                      type: 'condition'
+                      data:
+                        icon-key: ''
+                        type: 'Active'
+                        potion: 'Weakness'
+                        min-rank-base: 2
+                        min-rank-scale: 0
+                        max-rank-base: 2
+                        max-rank-scale: 0
+                      children:
+                        Passive-g:
+                          type: 'mechanic'
+                          data:
+                            icon-key: 'duration'
+                            counts: 'True'
+                            seconds-base: 6
+                            seconds-scale: 1
+                Damage-h:
+                  type: 'mechanic'
+                  data:
+                    icon-key: 'damage'
+                    counts: 'True'
+                    type: 'Damage'
+                    value-base: 6
+                    value-scale: 1
+                    true: 'True'
+                    classifier: 'default'

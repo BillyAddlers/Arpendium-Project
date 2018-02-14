@@ -1,14 +1,14 @@
-Heal:
-  name: 'Heal'
-  type: 'Healing'
+Cyroswing:
+  name: 'Cyroswing'
+  type: 'AOE'
   max-level: 8
   skill-req: ''
   skill-req-lvl: 1
   needs-permission: 'False'
-  msg: '&1{player} &2has cast &1{skill}'
+  msg: '&6{player} &2has cast &6{skill}'
   combo: 'L L L'
   indicator: '2D'
-  icon: 'Apple'
+  icon: 'Iron Sword'
   icon-data: 0
   icon-lore:
   - '&d{name} &7({level}/{max})'
@@ -17,10 +17,11 @@ Heal:
   - '{req:level}Level: {attr:level}'
   - '{req:cost}Cost: {attr:cost}'
   - ''
-  - '&2What does healer do?, Of course healing :D'
-  - '&2Heal Allies for {attr:heal.value} Health'
+  - '&2Swing your Sword at the enemy, dealing AOE damages..'
+  - '&2Damage: {attr:damage.value}'
+  - '&2Radius: {attr:radius.radius}'
+  - '&2Burning Duration: {attr:fire.seconds}'
   - ''
-  - '&2Heal Amount: {heal}'
   - '&2Mana: {attr:mana}'
   - '&2Cooldown: {attr:cooldown}'
   attributes:
@@ -28,14 +29,14 @@ Heal:
     level-scale: 0
     cost-base: 1
     cost-scale: 0
-    cooldown-base: 9
-    cooldown-scale: -0.7
-    mana-base: 10
-    mana-scale: 2
+    cooldown-base: 15
+    cooldown-scale: -0.5
+    mana-base: 12
+    mana-scale: 0
     points-spent-req-base: 0
     points-spent-req-scale: 0
     incompatible:
-    - 'Tranquility'
+    - 'GravityForce'
   components:
     Cast-a:
       type: 'trigger'
@@ -50,38 +51,41 @@ Heal:
             check-data: 'False'
             check-lore: 'False'
             check-name: 'True'
-            name: 'Staff'
+            name: 'Sword'
             regex: 'False'
           children:
-            Single-c:
+            Area-c:
               type: 'target'
               data:
-                icon-key: 'healing'
-                range-base: 5
-                range-scale: 0
-                tolerance-base: 4
-                tolerance-scale: 0
-                group: 'Ally'
+                icon-key: 'radius'
+                radius-base: 2
+                radius-scale: 1
+                group: 'Enemy'
                 wall: 'False'
+                caster: 'False'
+                max-base: 99
+                max-scale: 0
               children:
-                Heal-d:
+                Damage-d:
                   type: 'mechanic'
                   data:
-                    icon-key: 'heal'
+                    icon-key: 'damage'
                     counts: 'True'
-                    type: 'Health'
-                    value-base: 15
-                    value-scale: 2
+                    type: 'Damage'
+                    value-base: 8
+                    value-scale: 1
+                    true: 'False'
+                    classifier: 'default'
                 Particle Animation-e:
                   type: 'mechanic'
                   data:
-                    icon-key: 'particle1'
+                    icon-key: ''
                     counts: 'True'
                     steps: 1
                     frequency: 0.05
                     angle: 0
                     start: 0
-                    duration-base: 1
+                    duration-base: 5
                     duration-scale: 0
                     h-translation-base: 0
                     h-translation-scale: 0
@@ -89,7 +93,7 @@ Heal:
                     v-translation-scale: 0
                     h-cycles: 1
                     v-cycles: 1
-                    particle: 'Happy Villager'
+                    particle: 'Angry Villager'
                     arrangement: 'Circle'
                     radius-base: 4
                     radius-scale: 0
@@ -105,3 +109,34 @@ Heal:
                     forward: 0
                     upward: 0
                     right: 0
+                Sound-f:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    version: '1.9+'
+                    newsound: 'Block Anvil Hit'
+                    volume-base: 100
+                    volume-scale: 0
+                    pitch-base: 1
+                    pitch-scale: 0
+                Lightning-g:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'False'
+                    damage: 'True'
+                    forward-base: 0
+                    forward-scale: 0
+                    right-base: 0
+                    right-scale: 0
+                Lightning-h:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'False'
+                    damage: 'True'
+                    forward-base: 0
+                    forward-scale: 0
+                    right-base: 0
+                    right-scale: 0

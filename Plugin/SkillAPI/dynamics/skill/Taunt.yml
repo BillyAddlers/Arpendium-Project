@@ -1,0 +1,81 @@
+Taunt:
+  name: 'Taunt'
+  type: 'Debuff'
+  max-level: 8
+  skill-req: ''
+  skill-req-lvl: 1
+  needs-permission: 'False'
+  msg: '&6{player} &2has cast &6{skill}'
+  combo: 'R R R'
+  indicator: '2D'
+  icon: 'Jack O Lantern'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}Level: {attr:level}'
+  - '{req:cost}Cost: {attr:cost}'
+  - ''
+  - '&2Taunt Enemies, and stun them for brief duration'
+  - '&2Stun Duration: {attr:stun.duration}'
+  - ''
+  - '&2Mana: {attr:mana}'
+  - '&2Cooldown: {attr:cooldown}'
+  attributes:
+    level-base: 1
+    level-scale: 0
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 9
+    cooldown-scale: 0
+    mana-base: 5
+    mana-scale: 0
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - 'HalfmoonSlash'
+  components:
+    Cast-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Area-b:
+          type: 'target'
+          data:
+            icon-key: 'radius'
+            radius-base: 4
+            radius-scale: 1
+            group: 'Enemy'
+            wall: 'False'
+            caster: 'False'
+            max-base: 99
+            max-scale: 0
+          children:
+            Taunt-c:
+              type: 'mechanic'
+              data:
+                icon-key: ''
+                counts: 'True'
+                amount-base: 3
+                amount-scale: 1
+            Status-d:
+              type: 'mechanic'
+              data:
+                icon-key: 'stun'
+                counts: 'True'
+                status: 'Stun'
+                duration-base: 1
+                duration-scale: 1
+            Sound-e:
+              type: 'mechanic'
+              data:
+                icon-key: ''
+                counts: 'True'
+                version: '1.9+'
+                newsound: 'Entity Endermen Scream'
+                volume-base: 100
+                volume-scale: 0
+                pitch-base: 1
+                pitch-scale: 0

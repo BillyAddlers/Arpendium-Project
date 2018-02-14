@@ -1,0 +1,307 @@
+Assasination:
+  name: 'Assasination'
+  type: 'Single Target'
+  max-level: 10
+  skill-req: ''
+  skill-req-lvl: 1
+  needs-permission: 'False'
+  msg: '&6{player} &2has gone invisible with &6{skill}'
+  combo: 'R R R'
+  indicator: '2D'
+  icon: 'Coal'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}&2Level: {attr:level}'
+  - '{req:cost}&2Cost: {attr:cost}'
+  - ''
+  - '&2Warping to target and dealt massive damage.'
+  - ''
+  - '&2Damage: {attr:damage.value}'
+  - '&2Mana: {attr:mana}'
+  - '&2Cooldown: {attr:cooldown}'
+  attributes:
+    level-base: 1
+    level-scale: 0
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 30
+    cooldown-scale: 0
+    mana-base: 12
+    mana-scale: 0
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - 'ExcessChain'
+  components:
+    Cast-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Item-b:
+          type: 'condition'
+          data:
+            icon-key: ''
+            check-mat: 'False'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'True'
+            name: 'Sword'
+            regex: 'False'
+          children:
+            Single-c:
+              type: 'target'
+              data:
+                icon-key: ''
+                range-base: 20
+                range-scale: 0
+                tolerance-base: 4
+                tolerance-scale: 0
+                group: 'Enemy'
+                wall: 'False'
+              children:
+                Warp Target-d:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    type: 'Caster to Target'
+                Particle Projectile-e:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    group: 'Enemy'
+                    spread: 'Cone'
+                    amount-base: 1
+                    amount-scale: 0
+                    velocity-base: 3
+                    velocity-scale: 0
+                    angle-base: 30
+                    angle-scale: 0
+                    position: 0
+                    forward-base: 0
+                    forward-scale: 0
+                    upward-base: 0
+                    upward-scale: 0
+                    right-base: 0
+                    right-scale: 0
+                    gravity: 0
+                    pierce: 'False'
+                    particle: 'Crit'
+                    arrangement: 'Sphere'
+                    radius-base: 4
+                    radius-scale: 0
+                    particles-base: 20
+                    particles-scale: 0
+                    visible-radius: 25
+                    dx: 0
+                    dy: 0
+                    dz: 0
+                    speed: 1
+                    amount: 1
+                    frequency: 0.05
+                    lifespan: 1
+                    use-effect: 'False'
+                  children:
+                    Damage-f:
+                      type: 'mechanic'
+                      data:
+                        icon-key: ''
+                        counts: 'True'
+                        type: 'Multiplier'
+                        value-base: 70
+                        value-scale: 1
+                        true: 'True'
+                        classifier: 'default'
+                    Push-g:
+                      type: 'mechanic'
+                      data:
+                        icon-key: ''
+                        counts: 'True'
+                        type: 'Fixed'
+                        speed-base: 5
+                        speed-scale: 1
+                    Sound-h:
+                      type: 'mechanic'
+                      data:
+                        icon-key: ''
+                        counts: 'True'
+                        version: '1.9+'
+                        newsound: 'Block Anvil Hit'
+                        volume-base: 100
+                        volume-scale: 0
+                        pitch-base: 1
+                        pitch-scale: 0
+                    Self-i:
+                      type: 'target'
+                      data:
+                        icon-key: ''
+                      children:
+                        Launch-j:
+                          type: 'mechanic'
+                          data:
+                            icon-key: ''
+                            counts: 'True'
+                            relative: 'Target'
+                            forward-base: 1
+                            forward-scale: 0
+                            upward-base: 2
+                            upward-scale: 0.5
+                            right-base: 0
+                            right-scale: 0
+                        Delay-k:
+                          type: 'mechanic'
+                          data:
+                            icon-key: ''
+                            counts: 'True'
+                            delay-base: 2
+                            delay-scale: 0
+                          children:
+                            Warp-l:
+                              type: 'mechanic'
+                              data:
+                                icon-key: ''
+                                counts: 'True'
+                                walls: 'False'
+                                forward-base: 30
+                                forward-scale: 1
+                                upward-base: 0
+                                upward-scale: 0
+                                right-base: 0
+                                right-scale: 0
+        Item-m:
+          type: 'condition'
+          data:
+            icon-key: ''
+            check-mat: 'False'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'True'
+            name: 'Dagger'
+            regex: 'False'
+          children:
+            Single-n:
+              type: 'target'
+              data:
+                icon-key: ''
+                range-base: 20
+                range-scale: 0
+                tolerance-base: 4
+                tolerance-scale: 0
+                group: 'Enemy'
+                wall: 'False'
+              children:
+                Warp Target-o:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    type: 'Caster to Target'
+                Particle Projectile-p:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    group: 'Enemy'
+                    spread: 'Cone'
+                    amount-base: 1
+                    amount-scale: 0
+                    velocity-base: 3
+                    velocity-scale: 0
+                    angle-base: 30
+                    angle-scale: 0
+                    position: 0
+                    forward-base: 0
+                    forward-scale: 0
+                    upward-base: 0
+                    upward-scale: 0
+                    right-base: 0
+                    right-scale: 0
+                    gravity: 0
+                    pierce: 'False'
+                    particle: 'Crit'
+                    arrangement: 'Sphere'
+                    radius-base: 4
+                    radius-scale: 0
+                    particles-base: 20
+                    particles-scale: 0
+                    visible-radius: 25
+                    dx: 0
+                    dy: 0
+                    dz: 0
+                    speed: 1
+                    amount: 1
+                    frequency: 0.05
+                    lifespan: 1
+                    use-effect: 'False'
+                  children:
+                    Damage-q:
+                      type: 'mechanic'
+                      data:
+                        icon-key: ''
+                        counts: 'True'
+                        type: 'Multiplier'
+                        value-base: 70
+                        value-scale: 1
+                        true: 'True'
+                        classifier: 'default'
+                    Push-r:
+                      type: 'mechanic'
+                      data:
+                        icon-key: ''
+                        counts: 'True'
+                        type: 'Fixed'
+                        speed-base: 5
+                        speed-scale: 1
+                    Sound-s:
+                      type: 'mechanic'
+                      data:
+                        icon-key: ''
+                        counts: 'True'
+                        version: '1.9+'
+                        newsound: 'Block Anvil Hit'
+                        volume-base: 100
+                        volume-scale: 0
+                        pitch-base: 1
+                        pitch-scale: 0
+                    Self-t:
+                      type: 'target'
+                      data:
+                        icon-key: ''
+                      children:
+                        Launch-u:
+                          type: 'mechanic'
+                          data:
+                            icon-key: ''
+                            counts: 'True'
+                            relative: 'Target'
+                            forward-base: 1
+                            forward-scale: 0
+                            upward-base: 2
+                            upward-scale: 0.5
+                            right-base: 0
+                            right-scale: 0
+                        Delay-v:
+                          type: 'mechanic'
+                          data:
+                            icon-key: ''
+                            counts: 'True'
+                            delay-base: 2
+                            delay-scale: 0
+                          children:
+                            Warp-w:
+                              type: 'mechanic'
+                              data:
+                                icon-key: ''
+                                counts: 'True'
+                                walls: 'False'
+                                forward-base: 30
+                                forward-scale: 1
+                                upward-base: 0
+                                upward-scale: 0
+                                right-base: 0
+                                right-scale: 0

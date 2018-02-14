@@ -1,0 +1,106 @@
+SmokeScreen:
+  name: 'SmokeScreen'
+  type: 'Debuff + Buff'
+  max-level: 10
+  skill-req: ''
+  skill-req-lvl: 1
+  needs-permission: 'False'
+  msg: '&6{player} &2has cast &6{skill}'
+  combo: 'L L L'
+  indicator: '2D'
+  icon: 'Fireball'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}Level: {attr:level}'
+  - '{req:cost}Cost: {attr:cost}'
+  - ''
+  - '&2Cast A Bomb of Smoke to Block Enemy Sight'
+  - '&2Duration: {attr:blind.seconds}'
+  - '&2Radius: {attr:radius.radius}'
+  - ''
+  - '&2Mana: {attr:mana}'
+  - '&2Cooldown: {attr:cooldown}'
+  attributes:
+    level-base: 1
+    level-scale: 0
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 16
+    cooldown-scale: 0
+    mana-base: 6
+    mana-scale: 0
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - 'FlowerPetals'
+  components:
+    Cast-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Area-b:
+          type: 'target'
+          data:
+            icon-key: 'radius'
+            radius-base: 3
+            radius-scale: 1
+            group: 'Enemy'
+            wall: 'False'
+            caster: 'False'
+            max-base: 99
+            max-scale: 0
+          children:
+            Potion-c:
+              type: 'mechanic'
+              data:
+                icon-key: 'blind'
+                counts: 'True'
+                potion: 'Blindness'
+                ambient: 'True'
+                tier-base: 2
+                tier-scale: 0
+                seconds-base: 5
+                seconds-scale: 1
+            Particle Animation-d:
+              type: 'mechanic'
+              data:
+                icon-key: ''
+                counts: 'True'
+                steps: 1
+                frequency: 0.05
+                angle: 0
+                start: 0
+                duration-base: 5
+                duration-scale: 0
+                h-translation-base: 0
+                h-translation-scale: 0
+                v-translation-base: 0
+                v-translation-scale: 0
+                h-cycles: 1
+                v-cycles: 1
+                particle: 'Smoke'
+                arrangement: 'Circle'
+                radius-base: 10
+                radius-scale: 0
+                particles-base: 30
+                particles-scale: 0
+                direction: 'XZ'
+                data: 0
+                forward: 0
+                upward: 0
+                right: 0
+            Sound-e:
+              type: 'mechanic'
+              data:
+                icon-key: ''
+                counts: 'True'
+                version: '1.9+'
+                newsound: 'Entity Blaze Shoot'
+                volume-base: 100
+                volume-scale: 0
+                pitch-base: 1
+                pitch-scale: 0

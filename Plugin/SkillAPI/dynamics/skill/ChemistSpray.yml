@@ -1,5 +1,3 @@
-# Suvivalist 1st Skill Template #
-
 ChemistSpray:
   name: 'ChemistSpray'
   type: 'Area'
@@ -49,7 +47,7 @@ ChemistSpray:
           type: 'target'
           data:
             icon-key: 'area'
-            radius-base: 3
+            radius-base: 4
             radius-scale: 1
             group: 'Enemy'
             wall: 'False'
