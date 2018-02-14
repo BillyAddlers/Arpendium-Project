@@ -1,0 +1,37 @@
+Acolyte:
+  name: 'Acolyte'
+  prefix: '&cAcolyte'
+  group: 'class'
+  mana: '&1Mana'
+  max-level: 40
+  parent: ''
+  needs-permission: 'False'
+  exp-source: 279
+  mana-regen: 2
+  tree: 'Requirement'
+  skills:
+  - ''
+  icon: 'Slime Ball'
+  icon-data: 0
+  icon-lore:
+  - '&6[&2Magic&6]'
+  - '&2Supportive Type Class with Unique Battle Style. Capable of blowing &2debuff out of party, summoning totem to heal ally, and hold the line &2of combat using his Familiar. Adapt your playstyle to fit your familiar, &2or vice-versa.'
+  - '&2Recommended Weapons : Staff, Dagger'
+  blacklist:
+  - ''
+  action-bar: ''
+  attributes:
+    health-base: 20
+    health-scale: 1
+    mana-base: 30
+    mana-scale: 1
+    vitality-base: 3
+    vitality-scale: 1
+    spirit-base: 4
+    spirit-scale: 1
+    intelligence-base: 7
+    intelligence-scale: 1
+    dexterity-base: 3
+    dexterity-scale: 1
+    strength-base: 3
+    strength-scale: 1
