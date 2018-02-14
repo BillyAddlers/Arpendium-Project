@@ -1,0 +1,90 @@
+ChemistSpray:
+  name: 'ChemistSpray'
+  type: 'Area'
+  max-level: 8
+  skill-req: ''
+  skill-req-lvl: 1
+  needs-permission: 'False'
+  msg: '&d{player} &2has cast &d{skill}'
+  combo: 'L L L'
+  indicator: '2D'
+  icon: 'Redstone'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}Level: {attr:level}'
+  - '{req:cost}Cost: {attr:cost}'
+  - ''
+  - '&2Spray a Dissolved Fluid of Redstone at enemy'
+  - '&2Damage: {attr:damage.value}'
+  - '&2Stun Duration: {attr:status.duration}'
+  - '&2Area: {attr:area.radius}'
+  - ''
+  - '&2Mana: {attr:mana}'
+  - '&2Cooldown: {attr:cooldown}'
+  attributes:
+    level-base: 1
+    level-scale: 0
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 13
+    cooldown-scale: -0.5
+    mana-base: 10
+    mana-scale: 2
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - 'Manuscript'
+  components:
+    Cast-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Area-b:
+          type: 'target'
+          data:
+            icon-key: 'area'
+            radius-base: 3
+            radius-scale: 1
+            group: 'Enemy'
+            wall: 'False'
+            caster: 'False'
+            max-base: 99
+            max-scale: 0
+          children:
+            Status-c:
+              type: 'mechanic'
+              data:
+                icon-key: 'status'
+                counts: 'True'
+                status: 'Stun'
+                duration-base: 1
+                duration-scale: 1
+            Particle-d:
+              type: 'mechanic'
+              data:
+                icon-key: 'particle'
+                counts: 'True'
+                particle: 'Smoke'
+                arrangement: 'Sphere'
+                radius-base: 3
+                radius-scale: 1
+                particles-base: 20
+                particles-scale: 0
+                data: 0
+                forward: 0
+                upward: 0
+                right: 0
+            Damage-e:
+              type: 'mechanic'
+              data:
+                icon-key: 'damage'
+                counts: 'True'
+                type: 'Damage'
+                value-base: 5
+                value-scale: 2
+                true: 'False'
+                classifier: 'default'
