@@ -1,0 +1,164 @@
+Bloodrage:
+  name: 'Bloodrage'
+  type: 'Buff'
+  max-level: 10
+  skill-req: ''
+  skill-req-lvl: 1
+  needs-permission: 'False'
+  msg: '&4{player} &2has cast &4{skill}'
+  combo: 'L L L'
+  indicator: '2D'
+  icon: 'Jack O Lantern'
+  icon-data: 0
+  icon-lore:
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '{req:level}&2Level: {attr:level}'
+  - '{req:cost}&2Cost: {attr:cost}'
+  - ''
+  - '&2Draws power from the blood flows within vampire'
+  - '&2Increasing combat power'
+  - ''
+  - '&2Mana: {attr:mana}'
+  - '&2Cooldown: {attr:cooldown}'
+  attributes:
+    level-base: 1
+    level-scale: 3
+    cost-base: 1
+    cost-scale: 0
+    cooldown-base: 5
+    cooldown-scale: -0.1
+    mana-base: 10
+    mana-scale: 5
+    points-spent-req-base: 0
+    points-spent-req-scale: 0
+    incompatible:
+    - ''
+  components:
+    Cast-a:
+      type: 'trigger'
+      data:
+        icon-key: ''
+      children:
+        Self-b:
+          type: 'target'
+          data:
+            icon-key: ''
+          children:
+            Health-c:
+              type: 'condition'
+              data:
+                icon-key: 'threshold1'
+                type: 'Percent'
+                min-value-base: 0
+                min-value-scale: 0
+                max-value-base: 30
+                max-value-scale: 0
+              children:
+                Particle Animation-d:
+                  type: 'mechanic'
+                  data:
+                    icon-key: 'particle1'
+                    counts: 'True'
+                    steps: 1
+                    frequency: 0.05
+                    angle: 0
+                    start: 0
+                    duration-base: 5
+                    duration-scale: 1
+                    h-translation-base: 0
+                    h-translation-scale: 0
+                    v-translation-base: 0
+                    v-translation-scale: 0
+                    h-cycles: 1
+                    v-cycles: 1
+                    particle: 'Angry Villager'
+                    arrangement: 'Sphere'
+                    radius-base: 5
+                    radius-scale: 0
+                    particles-base: 20
+                    particles-scale: 0
+                    visible-radius: 25
+                    dx: 0
+                    dy: 0
+                    dz: 0
+                    speed: 1
+                    amount: 1
+                    forward: 0
+                    upward: 0
+                    right: 0
+                Immunity-e:
+                  type: 'mechanic'
+                  data:
+                    icon-key: 'immune1'
+                    counts: 'True'
+                    type: 'Entity Attack'
+                    seconds-base: 5
+                    seconds-scale: 1
+                    multiplier-base: 0
+                    multiplier-scale: 0
+                Damage Buff-f:
+                  type: 'mechanic'
+                  data:
+                    icon-key: 'damage1'
+                    counts: 'True'
+                    type: 'Multiplier'
+                    skill: 'False'
+                    value-base: 20
+                    value-scale: 2
+                    seconds-base: 5
+                    seconds-scale: 1
+            Health-g:
+              type: 'condition'
+              data:
+                icon-key: 'threshold2'
+                type: 'Percent'
+                min-value-base: 30
+                min-value-scale: 0
+                max-value-base: 100
+                max-value-scale: 0
+              children:
+                Damage Buff-h:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    type: 'Multiplier'
+                    skill: 'False'
+                    value-base: 20
+                    value-scale: 2
+                    seconds-base: 5
+                    seconds-scale: 1
+                Particle Animation-i:
+                  type: 'mechanic'
+                  data:
+                    icon-key: ''
+                    counts: 'True'
+                    steps: 1
+                    frequency: 0.05
+                    angle: 0
+                    start: 0
+                    duration-base: 5
+                    duration-scale: 1
+                    h-translation-base: 0
+                    h-translation-scale: 0
+                    v-translation-base: 0
+                    v-translation-scale: 0
+                    h-cycles: 1
+                    v-cycles: 1
+                    particle: 'Angry Villager'
+                    arrangement: 'Sphere'
+                    radius-base: 5
+                    radius-scale: 0
+                    particles-base: 20
+                    particles-scale: 0
+                    visible-radius: 25
+                    dx: 0
+                    dy: 0
+                    dz: 0
+                    speed: 1
+                    amount: 1
+                    forward: 0
+                    upward: 0
+                    right: 0

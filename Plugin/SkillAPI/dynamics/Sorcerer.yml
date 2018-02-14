@@ -1,0 +1,36 @@
+Sorcerer:
+  name: 'Sorcerer'
+  prefix: '&6Sorcerer'
+  group: 'class'
+  mana: '&1Mana'
+  max-level: 40
+  parent: ''
+  needs-permission: 'False'
+  exp-source: 279
+  mana-regen: 2
+  tree: 'Requirement'
+  skills:
+  - ''
+  icon: 'Stick'
+  icon-data: 0
+  icon-lore:
+  - '&6[&2Magic&6]'
+  - '&2Argent Class with both Swords and Spellcasting. Able to Full-Potent &2Spellcasting with Staff. Using Elemental-Imbued Sword to Exploit &2enemy elemental weakness. A Highly recommended class for those &2who prefer stable build between Strength and Intelligence &2Recommended Weapons : Sword, Staff'
+  blacklist:
+  - ''
+  action-bar: ''
+  attributes:
+    health-base: 20
+    health-scale: 1
+    mana-base: 25
+    mana-scale: 1
+    vitality-base: 6
+    vitality-scale: 1
+    spirit-base: 2
+    spirit-scale: 1
+    intelligence-base: 7
+    intelligence-scale: 1
+    dexterity-base: 3
+    dexterity-scale: 1
+    strength-base: 6
+    strength-scale: 1

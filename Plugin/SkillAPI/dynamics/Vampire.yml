@@ -1,0 +1,46 @@
+Vampire:
+  name: 'Vampire'
+  prefix: '&4Vamps'
+  group: 'class'
+  mana: '&2Bloodlust'
+  max-level: 40
+  parent: ''
+  needs-permission: 'False'
+  exp-source: 275
+  mana-regen: 2
+  tree: 'Requirement'
+  skills:
+  - 'Bloodlust Extended'
+  - 'Bloodbath'
+  - 'Bloodrage'
+  - 'Bloodborne'
+  - 'Eclipse Blessing'
+  - 'Vampirism Profess'
+  - 'Injection Stigma'
+  - 'Wrath of Vladimir'
+  icon: 'Jack O Lantern'
+  icon-data: 0
+  icon-lore:
+  - '&6&4[Heroic&6]'
+  - '&2A Legendary Vampire, born from the dark side of this world'
+  - '&2As the night crawls, their skin started to get pale and pale'
+  - '&2The wind blows, in the night, force the cloud to pull over'
+  - "&2And from the sightseeing of the moving cloud, comes the &2full moon. Bring the moonlight essence and werewolf teeth, &2And you'll hereby known as a Drought Vamps"
+  blacklist:
+  - ''
+  action-bar: ''
+  attributes:
+    health-base: 30
+    health-scale: 2
+    mana-base: 50
+    mana-scale: 1
+    vitality-base: 50
+    vitality-scale: 1
+    spirit-base: 13
+    spirit-scale: 2
+    intelligence-base: 34
+    intelligence-scale: 2
+    dexterity-base: 33
+    dexterity-scale: 2
+    strength-base: 9
+    strength-scale: 2
