@@ -21,8 +21,9 @@ WeakenBolt:
   - '&6[&2Cast a lightning that do AOE Weaknes Damage.&6]'
   - ''
   - '&2Damage: {damage}'
-  - '&2Mana: {attr:mana}'
+  - '&2Range: {range}'
   - '&2Weaknes Effect Duration: {duration}'
+  - '&2Mana: {attr:mana}'
   - '&2Cooldown: {attr:cooldown}'
   attributes:
     level-base: 1
